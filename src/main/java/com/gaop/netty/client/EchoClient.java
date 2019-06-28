@@ -2,6 +2,7 @@ package com.gaop.netty.client;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -38,6 +39,8 @@ public class EchoClient {
                             channel.pipeline().addLast(new EchoClientHandler());
                         }
                     });
+            ChannelFuture f = b.connect().sync();
+            f.channel().closeFuture().sync();
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
@@ -46,14 +49,16 @@ public class EchoClient {
     }
 
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
-            System.err.println(
-                    "Usage: " + EchoClient.class.getSimpleName() +
-                            "<host> <port>");
-            return;
-        }
-        String host = args[0];
-        int port = Integer.parseInt(args[1]);
+//        if (args.length != 2) {
+//            System.err.println(
+//                    "Usage: " + EchoClient.class.getSimpleName() +
+//                            "<host> <port>");
+//            return;
+//        }
+//        String host = args[0];
+//        int port = Integer.parseInt(args[1]);
+        String host = "127.0.0.1";
+        int port = 8080;
         new EchoClient(host, port).start();
     }
 }
