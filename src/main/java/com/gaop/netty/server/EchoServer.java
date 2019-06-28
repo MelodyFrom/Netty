@@ -31,13 +31,16 @@ public class EchoServer {
             System.err.println(
                     "Usage:" + EchoServer.class.getSimpleName() + "<port>"
             );
-            int port = Integer.parseInt(args[0]);
-            // 设置端口值并启动服务器
-            new EchoServer(port).start();
+
+
         }
+        int port = Integer.parseInt(args[0]);
+        // 设置端口值并启动服务器
+        new EchoServer(port).start();
     }
 
     public void start() throws Exception {
+        System.out.println("start...");
         final EchoServerHandler serverHandler = new EchoServerHandler();
         // 创建 Event-LoopGroup
         EventLoopGroup group = new NioEventLoopGroup();
