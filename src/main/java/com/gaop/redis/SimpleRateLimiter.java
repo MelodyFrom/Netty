@@ -5,7 +5,6 @@ import redis.clients.jedis.Pipeline;
 import redis.clients.jedis.Response;
 
 import java.io.IOException;
-import java.security.Key;
 
 /**
  * redis 版本的基础限流器，适合较小流量的场景
@@ -30,7 +29,7 @@ public class SimpleRateLimiter {
      * @param maxCount 时间周期内最大可被执行次数
      * @return 如果允许执行就返回 true
      */
-    public boolean isActionllowed(String userId, String actionType, int period, int maxCount) throws IOException {
+    public boolean isActionAllowed(String userId, String actionType, int period, int maxCount) throws IOException {
         Pipeline pipeline = jedis.pipelined();
         Long currentTimestamp = System.currentTimeMillis();
         String key = String.format("%s:%s:%s", LIMIT_RATE_PREFIX, userId, actionType);
