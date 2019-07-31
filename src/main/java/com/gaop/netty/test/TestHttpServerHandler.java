@@ -18,8 +18,13 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
 
     // 读取客户端发来的请求，并向客户端响应
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
-        if (msg instanceof HttpRequest) {
 
+        // 获取网络请求消息对象类型
+        System.out.println(msg.getClass());
+        // 获取远程请求的客户端的地址
+        System.out.println(ctx.channel().remoteAddress());
+
+        if (msg instanceof HttpRequest) {
             HttpRequest httpRequest = (HttpRequest) msg;
             System.out.println("请求方法名：" + httpRequest.method().name());
             URI uri = new URI(httpRequest.uri());
@@ -36,6 +41,8 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
             response.headers().set(HttpHeaderNames.CONTENT_LENGTH, content.readableBytes());
 
             ctx.writeAndFlush(response);
+            // 服务端主动断开连接
+            ctx.channel().close();
         }
     }
 
@@ -53,7 +60,7 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("channel added");
+        System.out.println("handler added");
         super.handlerAdded(ctx);
     }
 
