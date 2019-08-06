@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.gaop.netty</groupId>
-    <artifactId>NettyInAction</artifactId>
+    <artifactId>Netty</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
@@ -24,26 +24,56 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.9</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
+            <version>3.8.0</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-compile-plugin</artifactId>
-                    <version>3.2</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>exec-maven-plugin</artifactId>
-                    <version>1.2.1</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!--<build>-->
+        <!--<pluginManagement>-->
+            <!--<plugins>-->
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-compile-plugin</artifactId>-->
+                    <!--<version>3.6.0</version>-->
+                    <!--<configuration>-->
+                        <!--<source>1.8</source>-->
+                        <!--<target>1.8</target>-->
+                    <!--</configuration>-->
+                <!--</plugin>-->
+                <!--<plugin>-->
+                    <!--<groupId>org.codehaus.mojo</groupId>-->
+                    <!--<artifactId>exec-maven-plugin</artifactId>-->
+                    <!--<version>1.2.1</version>-->
+                <!--</plugin>-->
+            <!--</plugins>-->
+        <!--</pluginManagement>-->
+    <!--</build>-->
+
+
 </project>
