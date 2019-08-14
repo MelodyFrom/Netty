@@ -17,6 +17,10 @@ public class ProtobufTest {
                 build();
 
         byte[] person2byteArgs = person.toByteArray();
+        for (byte b : person2byteArgs) {
+            System.out.print(b);
+        }
+        System.out.println("原结构：");
         AddressBookProtos.Person person2 = AddressBookProtos.Person.parseFrom(person2byteArgs);
 
         System.out.println(person2);
