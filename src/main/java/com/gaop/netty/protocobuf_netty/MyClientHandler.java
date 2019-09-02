@@ -1,8 +1,9 @@
 package com.gaop.netty.protocobuf_netty;
 
-import com.gaop.netty.protocolBuf.AddressBookProtos;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+
+import java.util.Random;
 
 /**
  * @author gaopeng@doctorwork.com
@@ -23,6 +24,20 @@ public class  MyClientHandler extends SimpleChannelInboundHandler<AddressBookPro
                 setId(1).
                 setEmail("gp626676634@sina.com").
                 build();
+
+        int rst = new Random().nextInt(3);
+
+        if (0 == rst) {
+//            AddressBookProtos.MyMessage myMessage = AddressBookProtos.MyMessage.newBuilder().
+//                    setDataType(AddressBookProtos.MyMessage.DataType.PersonType).setPerson()
+        } else if (1 == rst) {
+
+        } else {
+
+        }
+
+
+
         ctx.channel().writeAndFlush(person);
     }
 }
